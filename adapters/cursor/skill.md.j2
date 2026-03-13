@@ -1,0 +1,11 @@
+---
+name: {{ name }}
+description: {{ description }}
+{% if disable_model_invocation is defined and disable_model_invocation %}disable-model-invocation: true
+{% endif %}---
+
+{{ content }}
+{% for fragment in fragments %}
+
+{{ fragment }}
+{% endfor %}

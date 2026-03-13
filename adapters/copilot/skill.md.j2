@@ -1,0 +1,10 @@
+---
+name: {{ name }}
+description: {{ description }}
+---
+
+{{ content }}
+{% for fragment in fragments %}
+
+{{ fragment }}
+{% endfor %}

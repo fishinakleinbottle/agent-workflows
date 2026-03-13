@@ -1,0 +1,8 @@
+---
+name: {{ name }}
+description: {{ description }}
+tools: [{{ tools | join(', ') }}]
+{% if model is defined %}model: {{ model }}{% endif %}
+---
+
+{{ content }}

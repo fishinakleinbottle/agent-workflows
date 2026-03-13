@@ -1,0 +1,38 @@
+persona: default
+
+global_fragments:
+  - testing-philosophy
+
+targets:
+  claude:
+    skills:
+      - name: pr-review
+        fragments: [testing-philosophy]
+      - name: test-coverage
+        fragments: [testing-philosophy]
+      - name: code-review
+      - name: commit-messages
+    agents:
+      - name: test-failure-analyzer
+        tools: [Read, Grep, Bash]
+        model: sonnet
+
+  cursor:
+    skills:
+      - name: pr-review
+        fragments: [testing-philosophy]
+      - name: test-coverage
+        fragments: [testing-philosophy]
+      - name: code-review
+      - name: commit-messages
+    rules: []
+
+  copilot:
+    skills:
+      - name: pr-review
+        fragments: [testing-philosophy]
+      - name: test-coverage
+        fragments: [testing-philosophy]
+      - name: code-review
+      - name: commit-messages
+    instructions: []
