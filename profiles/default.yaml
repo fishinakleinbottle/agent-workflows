@@ -10,7 +10,9 @@ targets:
         fragments: [testing-philosophy]
       - name: test-coverage
         fragments: [testing-philosophy]
-      - name: code-review
+      - name: deep-review
+      - name: pre-pr-architecture-review
+      - name: codebase-architecture-scan
       - name: commit-messages
     agents:
       - name: test-failure-analyzer
@@ -23,7 +25,9 @@ targets:
         fragments: [testing-philosophy]
       - name: test-coverage
         fragments: [testing-philosophy]
-      - name: code-review
+      - name: deep-review
+      - name: pre-pr-architecture-review
+      - name: codebase-architecture-scan
       - name: commit-messages
     rules: []
 
@@ -33,6 +37,8 @@ targets:
         fragments: [testing-philosophy]
       - name: test-coverage
         fragments: [testing-philosophy]
-      - name: code-review
+      - name: deep-review
+      - name: pre-pr-architecture-review
+      - name: codebase-architecture-scan
       - name: commit-messages
     instructions: []
