@@ -96,13 +96,11 @@ Count: X new TODOs added, Y have ticket references, Z do not.
 
 ## Step 6 — Change quality checks
 
-Scan changed files for quality signals:
+Scan changed files for surface-level hygiene signals (complexity and error handling depth are covered by deep-review):
 
-1. **Long functions** — functions added or modified that exceed 50 lines. Use `grep -n "def "` to find function boundaries in changed files and measure line counts.
-2. **Missing docstrings** — new files or new public classes/functions without docstrings.
-3. **Debug statements left in** — `print(`, `console.log(`, `import pdb`, `breakpoint()`, `logging.debug(` in non-test source files.
-4. **Commented-out code** — 3 or more consecutive lines that are commented out (not docstrings, not license headers).
-5. **Bare exceptions** — `except:` or `except Exception:` without re-raising or logging.
+1. **Debug statements left in** — `print(`, `console.log(`, `import pdb`, `breakpoint()`, `logging.debug(` in non-test source files.
+2. **Commented-out code** — 3 or more consecutive lines that are commented out (not docstrings, not license headers).
+3. **Missing docstrings** — new files or new public classes/functions without docstrings.
 
 ## Step 7 — Report
 
@@ -135,7 +133,7 @@ New TODOs without ticket references.
 
 ### 7f. Quality issues
 
-Long functions, debug statements, commented-out code, bare exceptions.
+Debug statements, commented-out code, missing docstrings.
 
 ### 7g. Verdict
 

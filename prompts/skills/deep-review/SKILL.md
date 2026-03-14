@@ -1,11 +1,11 @@
 ---
 name: deep-review
-description: Deep file/module-level code review — complexity analysis, type safety audit, error handling review, performance pattern detection, and business logic assessment with per-file grades.
+description: Deep code-quality review complementing pr-review — complexity analysis, type safety audit, error handling review, performance pattern detection, and business logic assessment with per-file grades.
 ---
 
 # Deep Review
 
-Deep-dive review of specific files or modules. Not PR-scoped — called when you want thorough analysis of particular code. Produces per-file grades across complexity, type safety, error handling, and performance.
+Complements pr-review. Where pr-review is a fast grep-based merge gate (security, test mapping, dependency impact, hygiene), deep-review reads the code and reasons about quality. Produces per-file grades across complexity, type safety, error handling, performance, and business logic. Default scope: working tree changes, or last commit if the tree is clean.
 
 ## Step 1 — Target identification
 

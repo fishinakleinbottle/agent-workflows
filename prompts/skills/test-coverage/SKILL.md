@@ -15,19 +15,55 @@ If the file does not exist, treat this as the first run — there is no baseline
 
 ## Step 2 — Prerequisites
 
-Check pytest-cov is installed:
+**Required packages:** `pytest` and `pytest-cov` must both be installed in the project's Python environment. `pytest-cov` is a pytest plugin — it cannot function without `pytest`.
+
+Verify both are available:
 
 ```bash
-cd backend && source .venv/bin/activate && pip show pytest-cov
+cd backend && source .venv/bin/activate && pip show pytest pytest-cov
 ```
 
-If missing, install it:
+If either package is missing, detect the project's dependency manager and use the correct command. Do **not** mix managers — e.g. running bare `pip install` in a `uv`-managed project installs the package but does not record it in `pyproject.toml` or the lockfile, so the next `uv sync` will remove it.
+
+Detect the manager by checking for lockfiles/config in the project root:
+
+- `uv.lock` exists → **uv project**
+- `poetry.lock` exists → **poetry project**
+- `requirements*.txt` exists → **pip project**
+
+Then install accordingly:
 
 ```bash
-cd backend && source .venv/bin/activate && uv sync --group dev
+# uv — adds to pyproject.toml [dev-dependencies] and installs:
+cd backend && uv add --dev pytest pytest-cov
+
+# poetry — adds to [tool.poetry.group.dev.dependencies] and installs:
+cd backend && poetry add --group dev pytest pytest-cov
+
+# pip — installs into the active venv (also add to requirements-dev.txt manually):
+cd backend && source .venv/bin/activate && pip install pytest pytest-cov
 ```
 
-No other setup needed — coverage config lives in `pyproject.toml`.
+If the packages are already declared in `pyproject.toml` dev dependencies but not installed, sync instead:
+
+```bash
+# uv:
+cd backend && uv sync --group dev
+
+# poetry:
+cd backend && poetry install --with dev
+
+# pip:
+cd backend && source .venv/bin/activate && pip install -r requirements-dev.txt
+```
+
+If no virtual environment (`.venv`) exists and the project has no dependency manager, create one:
+
+```bash
+cd backend && python -m venv .venv && source .venv/bin/activate && pip install pytest pytest-cov
+```
+
+Coverage config (thresholds, source paths, omit patterns) is typically defined in `pyproject.toml` or `setup.cfg`. If neither exists, the defaults from the Step 3 command flags will be used.
 
 ## Step 3 — Run tests with coverage
 

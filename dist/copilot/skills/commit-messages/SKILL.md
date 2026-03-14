@@ -5,7 +5,7 @@ description: Generate clear, conventional commit messages from staged changes
 
 # Commit Message Generator
 
-Generate clear, well-structured commit messages based on the staged changes.
+Generate clear, well-structured commit messages based on the staged changes. Don't add claude co-author credits.
 
 ## Process
 
@@ -23,7 +23,7 @@ Generate clear, well-structured commit messages based on the staged changes.
 
 3. **Write the message**:
    - **Subject line**: `type(scope): concise description` (max 72 chars)
-   - **Body** (if needed): Explain *why*, not *what* — the diff shows what changed
+   - **Body** (if needed): Explain _why_, not _what_ — the diff shows what changed
    - **Footer** (if needed): Breaking changes, issue references
 
 ## Rules
